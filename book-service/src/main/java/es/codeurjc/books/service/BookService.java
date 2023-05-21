@@ -14,11 +14,14 @@ import es.codeurjc.books.repository.CommentRepository;
 @Service
 public class BookService {
 
-	@Autowired
-	private BookRepository books;
+	private final BookRepository books;
 
-	@Autowired
-	private CommentRepository comments;
+	private final CommentRepository comments;
+
+	public BookService(BookRepository books, CommentRepository comments) {
+		this.books = books;
+		this.comments = comments;
+	}
 
 	public Collection<Book> findAll() {
 		return books.findAll();

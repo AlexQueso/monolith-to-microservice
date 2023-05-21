@@ -12,8 +12,11 @@ import es.codeurjc.books.repository.CommentRepository;
 @Service
 public class CommentService {
 
-	@Autowired
-	private CommentRepository comments;
+	private final CommentRepository comments;
+
+	public CommentService(CommentRepository comments) {
+		this.comments = comments;
+	}
 
 	public Optional<Comment> findById(long id) {
 		return comments.findById(id);

@@ -24,27 +24,13 @@ import es.codeurjc.books.service.UserService;
 @RestController
 public class UserController {
 
-	@Autowired
-	private UserService users;
+	private final UserService users;
 
-	@Autowired
-	private CommentService comments;
+	private final CommentService comments;
 
-	public ResponseEntity<?> createUser(@RequestBody User user) {
-
-		try {
-
-			users.save(user);
-
-		} catch (DataIntegrityViolationException e) {
-			return ResponseEntity.badRequest()
-					.body("User nick should be unique");
-		}
-
-		URI location = fromCurrentRequest().path("/{id}")
-				.buildAndExpand(user.getId()).toUri();
-
-		return ResponseEntity.created(location).body(user);
+	public UserController(UserService users, CommentService comments) {
+		this.users = users;
+		this.comments = comments;
 	}
 
 	@PutMapping("/users/{id}")

@@ -14,11 +14,14 @@ import es.codeurjc.books.repository.UserRepository;
 @Service
 public class SampleDataLoader {
 
-	@Autowired
-	private BookRepository books;
+	private final BookRepository books;
 	
-	@Autowired
-	private UserRepository users;
+	private final UserRepository users;
+
+	public SampleDataLoader(BookRepository books, UserRepository users) {
+		this.books = books;
+		this.users = users;
+	}
 
 	@PostConstruct
 	public void init() {

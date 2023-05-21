@@ -26,14 +26,17 @@ import es.codeurjc.books.service.UserService;
 @RestController
 public class CommentController {
 
-	@Autowired
-	private CommentService comments;
+	private final CommentService comments;
 
-	@Autowired
-	private UserService users;
+	private final UserService users;
 
-	@Autowired
-	private BookService books;
+	private final BookService books;
+
+	public CommentController(CommentService comments, UserService users, BookService books) {
+		this.comments = comments;
+		this.users = users;
+		this.books = books;
+	}
 
 	interface CommentWithBookId
 			extends Book.WithId, Comment.WithBook, Comment.Basic {
