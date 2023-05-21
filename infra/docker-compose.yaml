@@ -31,14 +31,14 @@ services:
       - app-network
 
   books:
-    image: alexquesada/bookservice:0.0.2
+    image: alexquesada/bookservice:0.0.3
     restart: on-failure
     environment:
       - spring.datasource.url=jdbc:mysql://mysql-monolith:3306/books
       - spring.datasource.username=root
       - spring.datasource.password=password
       - spring.jpa.hibernate.ddl-auto=create-drop
-      - user.management=USERS_IN_MICROSERVICE
+      - user.management=USERS_IN_MONOLITH
       - USERS_HOST=users
       - USERS_PORT=8081
     ports:

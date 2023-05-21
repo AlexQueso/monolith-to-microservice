@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,28 +62,7 @@ public class UserClient {
         return Optional.empty();
     }
 
-
     private String getUrl() {
         return "http://" + USERS_HOST + ":" + USERS_PORT + "/users/";
-    }
-
-    private class UserList {
-        private List<User> users;
-
-        public UserList() {
-            users = new ArrayList<>();
-        }
-
-        public UserList(List<User> users) {
-            this.users = users;
-        }
-
-        public List<User> getUsers() {
-            return users;
-        }
-
-        public void setUsers(List<User> users) {
-            this.users = users;
-        }
     }
 }
