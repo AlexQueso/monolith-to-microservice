@@ -1,19 +1,20 @@
 package es.codeurjc.users.service;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import es.codeurjc.users.model.User;
 import es.codeurjc.users.repository.UserRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
-	@Autowired
-	private UserRepository users;
+	private final UserRepository users;
+
+	public UserService(UserRepository users) {
+		this.users = users;
+	}
 
 	public void save(User user) {
 		users.save(user);

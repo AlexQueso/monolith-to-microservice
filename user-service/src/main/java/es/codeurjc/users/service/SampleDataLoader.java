@@ -10,8 +10,11 @@ import javax.annotation.PostConstruct;
 @Service
 public class SampleDataLoader {
 	
-	@Autowired
-	private UserRepository users;
+	private final UserRepository users;
+
+	public SampleDataLoader(UserRepository users) {
+		this.users = users;
+	}
 
 	@PostConstruct
 	public void init() {

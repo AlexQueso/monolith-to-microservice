@@ -12,7 +12,8 @@ import java.util.List;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
-@RestController("/api/v1")
+@RestController
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     private final UserService users;
@@ -21,22 +22,22 @@ public class UserController {
         this.users = users;
     }
 
-    public ResponseEntity<?> createUser(@RequestBody User user) {
-
-        try {
-
-            users.save(user);
-
-        } catch (DataIntegrityViolationException e) {
-            return ResponseEntity.badRequest()
-                    .body("User nick should be unique");
-        }
-
-        URI location = fromCurrentRequest().path("/{id}")
-                .buildAndExpand(user.getId()).toUri();
-
-        return ResponseEntity.created(location).body(user);
-    }
+//    public ResponseEntity<?> createUser(@RequestBody User user) {
+//
+//        try {
+//
+//            users.save(user);
+//
+//        } catch (DataIntegrityViolationException e) {
+//            return ResponseEntity.badRequest()
+//                    .body("User nick should be unique");
+//        }
+//
+//        URI location = fromCurrentRequest().path("/{id}")
+//                .buildAndExpand(user.getId()).toUri();
+//
+//        return ResponseEntity.created(location).body(user);
+//    }
 
     @GetMapping("/")
     public List<User> getUsers() {
