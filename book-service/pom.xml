@@ -6,7 +6,7 @@
 
 	<groupId>es.codeurjc.mca</groupId>
 	<artifactId>book-service</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

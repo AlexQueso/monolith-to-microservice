@@ -16,7 +16,7 @@ public class UserServiceConfig {
 
     @Bean(name = "microserviceUserService")
     @ConditionalOnProperty(prefix = "user", name = "management", havingValue = "USERS_IN_MICROSERVICE")
-    public UserService monolith(UserClient userClient){
+    public UserService microservice(UserClient userClient){
         return new MicroserviceUserService(userClient);
     }
 }
