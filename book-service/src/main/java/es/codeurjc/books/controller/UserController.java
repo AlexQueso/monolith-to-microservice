@@ -1,12 +1,8 @@
 package es.codeurjc.books.controller;
 
-import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
-
-import java.net.URI;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,11 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import es.codeurjc.books.model.Comment;
 import es.codeurjc.books.model.User;
 import es.codeurjc.books.service.CommentService;
-import es.codeurjc.books.service.UserService;
+import es.codeurjc.books.service.user.UserService;
 
 @RestController
 public class UserController {
-
 	private final UserService users;
 
 	private final CommentService comments;
